@@ -1,0 +1,2 @@
+src/test-data/* linguist-vendored
+jest.config.js linguist-vendored
