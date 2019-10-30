@@ -10,17 +10,19 @@
 ```shell
 npm i -S lodestone-parser
 ```
-### Usage
+### Example
 ```js
-import { CharacterParser } from 'lodestone-parser'
-import * as axios from 'axios'
+import { LODESTONE_URL, LodestoneParser } from 'lodestone-parser'
+import Axios from 'axios';
 
-axios.get('https://de.finalfantasyxiv.com/lodestone/character/11756305')
-  .then(response => {
-    let parser = new CharacterParser(response.data);
-    console.log(parser.getBasicInfo());
-  })
-  .catch(error => {
-    console.log(error);
-  });
+Axios.get(LODESTONE_URL.character + '11756305')
+.then(res => {
+    const parser = new LodestoneParser(res.data);
+    console.log({
+        info: parser.character().basicInfo(),
+        attributes: parser.character().attributes(),
+        gear: parser.character().gear(),
+        jobs: parser.character().jobs()
+    });
+});
 ```
